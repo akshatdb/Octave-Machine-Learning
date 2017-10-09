@@ -27,10 +27,20 @@ centroids = zeros(K, n);
 %
 
 
-
-
-
-
+for i=1:K
+	l=0;
+	u=zeros(1, n);
+	for j=1:m
+		if idx(j) == i
+			u = u + X(j,:);
+			l = l + 1;
+		end
+	end
+	if l!=0
+	centroids(i,:) = u/l;
+	else
+	centroids(i,:) = binornd(1, n);
+end
 
 
 % =============================================================
